@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>member</title>
+</head>
+<body>
+    <br>
+    <br>
+    <a class="btn btn-success btn-lg" href="/add_member">Tambah Member</a>
+    <hr>
+    <p><b>List Member :</b></p>
+    {% if members%}
+    <table class="table table-hover table-light table-striped">
+        <thead class="table table-primary">
+            <tr>
+                <th>Member ID</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Tanggal Registrasi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{member.id}}</td>
+                <td>{{member.nama}}</td>
+                <td>{{member.email}}</td>
+                <td>{{member.tgl_registrasi}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

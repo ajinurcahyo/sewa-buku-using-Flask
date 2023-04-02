@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% if member %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail member</title>
+</head>
+<body>
+    <br>
+    <div class="d-flex justify-content-between">
+        <h2><b>Detail Member:</b></h2>
+    </div>
+    <h4 style="width: 80%;">{{member.nama}}</h4>
+    <br>
+    <hr>
+    <table class="table table-light table-hover">
+        <thead>
+            <tr>
+                <th>Member ID</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Tanggal Registrasi</th>
+                <th>Jumlah Pengeluaran</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{member.id}}</td>
+                <td>{{member.nama}}</td>
+                <td>{{member.email}}</td>
+                <td>{{member.tgl_registrasi}}</td>
+                <td>{{member.total_pengeluaran}}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,87 @@
+{% extends 'layout_admin.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add book</title>
+</head>
+<body>
+    <br>
+
+{% from "includes/_formhelpers.html" import render_field %}
+<div class="container">
+    
+    <div class="panel panel-primary">
+    <div class="panel-heading">
+    <h1 align="center">Form Tambah Buku</h1>
+    </div>
+    <div class="row">
+    <div class="panel-body">
+        <form method="POST" action="">
+        
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.id, class_="form-control")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.judul, class_="form-control")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.pengarang, class_="form-control")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.rating, class_="form-control")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.isbn, class_="form-control")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.bahasa, class_="form-control")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.jml_halaman, class_="form-control")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.jml_ulasan, class_="form-control")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.tgl_terbit, class_="form-control", type="date")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.penerbit, class_="form-control")}}
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+            {{render_field(form.total_buku, class_="form-control")}}
+            <br>
+            <p><button type="submit" class="btn btn-primary" value="Submit">Submit</button></p>
+            </div>
+        </div>
+        </form>
+    </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

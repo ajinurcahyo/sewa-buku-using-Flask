@@ -1,0 +1,54 @@
+{% extends 'layout_admin.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book</title>
+</head>
+<body>
+    <br>
+    <a class="btn btn-success" href="/add_book">Tambah buku</a>
+    <hr>
+    <p><b>List Buku :</b></p>
+    {% if books %}
+    <table class="table table-light table-hover">
+        <thead class="table table-warning">
+            <tr>
+                <th>Book ID</th>
+                <th>Judul</th>
+                <th>Pengarang</th>
+                <th>Total Buku</th>
+                <th>Jumlah Tersedia</th>
+                <th>Jumlah Disewa</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr style="cursor:pointer;">
+                <td><a class="btn btn-primary pull-left">{{"{:05d}".format(book.id)}}</a></td>
+                <td>{{book.judul}}</td>
+                <td>{{book.pengarang}}</td>
+                <td>{{book.total_buku}}</td>
+                <td>{{book.jml_tersedia}}</td>
+                <td>{{book.jml_disewa}}</td>
+                <td><a href="edit_book/{{book.id}}" class="btn btn-warning">Edit</a></td>
+                <td>
+                    <form action="{{url_for('delete_book', id=book.id)}}" method="POST"
+                        onsubmit="return confirm('Are you sure you want to delete this book?');">
+                        <input type="hidden" name="method" value="Delete">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

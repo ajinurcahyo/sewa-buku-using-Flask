@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book</title>
+</head>
+<body>
+    <br>
+    <h1>list Buku :</h1>
+    <hr>
+    {% if books %}
+    <table class="table table-light table-hover">
+        <thead class="table table-warning">
+            <tr>
+                <th>Book ID</th>
+                <th>Judul</th>
+                <th>Pengarang</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr style="cursor:pointer;">
+                <td><a href="/book/{{book.id}}" class="btn btn-info pull-left">{{"{:05d}".format(book.id)}}</a></td>
+                <td>{{book.judul}}</td>
+                <td>{{book.pengarang}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

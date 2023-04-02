@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail buku</title>
+</head>
+<body>
+    <br>
+    {% if book %}
+    <div class="d-flex justify-content-between">
+        <h2><b>Detail Buku:</b></h2>
+    </div>
+    <h4 style="width: 80%;">{{book.judul}}</h4>
+    <p style="line-height: 3px;"><i>by {{book.pengarang}}</i></p>
+    <br>
+    <hr>
+    <table class="table table-light table-hover">
+        <tbody>
+            <tr>
+                <td>Book ID</td>
+                <td>{{book.id}}</td>
+                <td>Judul</td>
+                <td>{{book.judul}}</td>
+            </tr>
+            <tr>
+                <td>Pengarang</td>
+                <td>{{book.pengarang}}</td>
+                <td>Rating</td>
+                <td>{{book.rating}}</td>
+            </tr>
+            <tr>
+                <td>ISBN</td>
+                <td>{{book.isbn}}</td>
+                <td>Bahasa</td>
+                <td>{{book.bahasa}}</td>
+            </tr>
+            <tr>
+                <td>Jumlah Halaman</td>
+                <td>{{book.jml_halaman}}</td>
+                <td>Jumlah Ulasan</td>
+                <td>{{book.jml_ulasan}}</td>
+            </tr>
+            <tr>
+                <td>Tanggal Terbit</td>
+                <td>{{book.tgl_terbit}}</td>
+                <td>Penerbit</td>
+                <td>{{book.penerbit}}</td>
+            </tr>
+            <tr>
+                <td>Total Buku</td>
+                <td>{{book.total_buku}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+    <style>
+        td {
+            padding: 15px !important;
+        }
+
+        td:nth-child(odd) {
+            font-weight: bold;
+        }
+    </style>
+    {% endblock %}
+</body>
+</html>

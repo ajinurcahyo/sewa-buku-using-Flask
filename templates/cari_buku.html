@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencarian</title>
+</head>
+<body>
+    <br>
+<h1>Cari Buku</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<hr>
+<form method="POST" action="">
+    <div class="form-group">
+        <div class="col-4">
+            {{render_field(form.judul, class_="form-control")}}
+        </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success" value="Submit">Cari</button>
+    
+</form>
+{% if books %}
+<br>
+<br>
+<br>
+
+<h2>Hasil Pencarian: </h2>
+<hr>
+<table class="table table-hover table-striped">
+    <thead class="table table-warning">
+        <tr>
+            <th>Book ID</th>
+            <th>Judul</th>
+            <th>Pengarang</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr style="cursor:pointer;">
+            <td><a href="/book/{{book.id}}" class="btn btn-info pull-center">{{"{:05d}".format(book.id)}}</a></td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.judul}}</td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.pengarang}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}
+</body>
+</html>

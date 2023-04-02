@@ -1,0 +1,28 @@
+{% extends 'layout_admin.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit member</title>
+</head>
+<body>
+    <br>
+    <h1>Edit Member</h1>
+    <hr>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <form method="POST" action="">
+        <div class="col-4">
+            {{render_field(form.name, class_="form-control", value=member.nama)}}
+        </div><br>
+        <div class="col-4">
+            {{render_field(form.email, class_="form-control", value=member.email)}}
+        </div>
+        <br>
+        <p><button type="submit" class="btn btn-primary" value="Submit">Submit</button></p>
+    </form>
+    {% endblock %}
+</body>
+</html>

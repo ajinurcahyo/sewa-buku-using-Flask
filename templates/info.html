@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan</title>
+</head>
+<body>
+    <br>
+    <h2 style="font-size:4em" align="center"><b>Selamat Datang di Sewa Buku Murah</b></h2>
+    <p style="font-size:17px" align="center">Tambah Pengetahuan dan Enjoy Menikmati Buku Dengan Biaya yang Terjangkau</p>
+    <hr>
+    <h1 align="center"><b>TOP 3 Buku Disewa</b></h1>
+    <br>
+    {% if books%}
+    <table class="table table-light table-striped table-hover table-bordered">
+        <thead class="table-warning">
+            <tr>
+                <th>Judul</th>
+                <th>Pengarang</th>
+                <th>Total Disewa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr style="cursor:pointer;">
+                <td>{{book.judul}}</td>
+                <td>{{book.pengarang}}</td>
+                <td>{{book.jml_disewa}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

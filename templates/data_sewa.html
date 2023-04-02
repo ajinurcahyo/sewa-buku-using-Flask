@@ -1,0 +1,69 @@
+{% extends 'layout_admin.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<br>
+	<br>
+	<hr>
+				<div class="container">
+					<div class="card">
+					<div class="card-header">
+					List Transaksi :
+					</div>
+					{% if transactions %}
+					<div class="card-body">
+							
+							<table class="table table-hover table-bordered table-sm">
+							<thead class="table table-info">
+								<tr>
+								<th scope="col">ID Transaksi</th>
+								<th scope="col">ID Buku</th>
+								<th scope="col">ID Member</th>
+								<th scope="col">Biaya Sewa /hari</th>
+								<th scope="col">Tanggal Sewa</th>
+								<th scope="col">Tanggal Kembali</th>
+								<th scope="col">Total Tagihan</th>
+								<th scope="col">Jumlah Bayar</th>
+								<th scope="col">Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for transaction in transactions %}
+								<tr>
+									<td>{{transaction.id}}</td>
+									<td>
+										<a href=""
+											class="btn btn-info pull-center">{{"{:05d}".format(transaction.id_buku)}}</a>
+									</td>
+									<td>
+										<a href=""
+											class="btn btn-secondary pull-left">{{"{:05d}".format(transaction.id_member)}}</a>
+									</td>
+									<td>{{transaction.biaya_sewa}}</td>
+									<td>{{transaction.tgl_sewa}}</td>
+									<td>{{transaction.tgl_kembali}}</td>
+									<td>{{transaction.total_tagihan}}</td>
+									<td>{{transaction.jml_bayar}}</td>
+									{% if transaction.jml_bayar=='-' %}
+									<td><a href="return_book/{{transaction.id}}" class="btn btn-danger pull-center">Return</a></td>
+									{% else %}
+									<td class="table-success">CLOSED</td>
+									{% endif %}
+								</tr>
+						{% endfor %}
+						</tbody>
+						</table>
+				</div>
+				</div>
+			</div>
+			{% endif %}
+{% endblock %}
+</body>
+</html>

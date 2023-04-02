@@ -1,0 +1,55 @@
+{% extends 'layout_admin.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>member</title>
+</head>
+<body>
+    <br>
+    <h2 style="font-size:4em" align="center"><b>Selamat Datang di Sewa Buku Murah</b></h2>
+    <p style="font-size:17px" align="center">Tambah Pengetahuan dan Enjoy Menikmati Buku Dengan Biaya yang Terjangkau</p>
+    <hr>
+    
+    <p>List Member:</p>
+    <hr>
+    {% if members%}
+    <table class="table table-hover table-light table-striped">
+        <thead class="table table-primary">
+            <tr>
+                <th>Member ID</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Tanggal Registrasi</th>
+                <th>Total Pengeluaran</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{member.id}}</td>
+                <td>{{member.nama}}</td>
+                <td>{{member.email}}</td>
+                <td>{{member.tgl_registrasi}}</td>
+                <td>{{member.total_pengeluaran}}</td>
+                <td><a href="edit_member/{{member.id}}" class="btn btn-warning pull-right">Edit</a></td>
+                <td>
+                    <form action="{{url_for('delete_member', id=member.id)}}" method="POST"
+                        onsubmit="return confirm('Are you sure you want to delete this member?');">
+                        <input type="hidden" name="method" value="Delete">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>
